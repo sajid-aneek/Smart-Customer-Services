@@ -1,5 +1,14 @@
+:root {
+    --light-gray: #f7f7f7;
+    --light-gray-separator: #dddddd;
+    --gray: #aaaaaa;
+    --dark-gray: #4d5e6e;
+    --dark-gray-separator: #0a2540;
+    --black: #000000;
+}
+
 body {
-    background: #f7f7f7;
+    background: var(--light-gray);
     font-family: 'Arimo', sans-serif;
 }
 
@@ -10,9 +19,59 @@ body {
     margin-right: 40px;
 }
 
+#menu-container {
+    border: 1px solid var(--dark-gray);
+    position: absolute;
+    top: 70px;
+    right: 48px;
+}
+
+#menu-container .login-display {
+    padding-bottom: 28px;
+}
+
+#menu-container div {
+    background-color: var(--light-gray);
+    max-width: calc(100vw - 130px);
+    width: 300px;
+    padding: 16px;
+}
+
+#menu-container a:not(:last-child) > div {
+    border-bottom: 1px dashed var(--light-gray-separator);
+}
+
+#header-logo-anchor {
+    color: var(--black);
+}
+
+.no-user-select {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+}
+
 .overlay {
     width: 100%;
     background: none;
+}
+
+.login-display {
+    align-self: center;
+    margin-right: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.login-display.admin, .login-display.admin a {
+    color: red;
 }
 
 .header-container {
@@ -26,23 +85,179 @@ body {
 
 .header-logo {
     margin: 4px 40px 0px 0px;
+    white-space: nowrap;
 }
 
 .header-container a {
-    color: #0a2540;
+    color: var(--dark-gray);
     text-decoration: none;
 }
 
-.header-nav:last-child {
-    margin-left: 40px;
+.header-nav-rside {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 320px;
+}
+
+.header-nav > a:hover {
+    color: var(--dark-gray-separator);
 }
 
 .header-nav > a {
+    display: inline-block;
+    white-space: nowrap;
     padding: 10px 20px;
 }
 
 .cart-widget-container {
+    margin-top: 4px;
+    margin-left: 24px;
+}
+
+.menu-widget {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 24px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+@media only screen and (max-width: 499px) {
+    #menu-container {
+        top: 150px;
+        left: 50px;
+        right: unset;
+    }
+
+    .cart-widget-container {
+        margin-left: 12px;
+    }
+
+    .menu-nav {
+        display: flex;
+        align-items: end;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .header-container {
+        display: block;
+    }
+
+    .header-logo {
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+
+    .login-display {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1199px) {
+    .menu-nav {
+        display: flex;
+        align-items: end;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .login-display {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .menu-nav {
+        display: none;
+    }
+}
+
+/* index.php */
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 5fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 10px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.product-box {
+    margin: 5px;
+    padding: 5px;
+    border: 1px dashed var(--light-gray);
+}
+
+.product-box:hover {
+    border: 1px dashed var(--gray);
+}
+
+.product-box img {
+    width: 100%;
+}
+
+.product-description {
+    font-size: 16px;
+}
+
+.sign-wrapper {
+    display: flex;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.sign-container {
+    width: 100%;
+}
+
+.sign-container h1 {
+    margin-bottom: -8px;
+}
+
+.sign-container p {
+    margin-bottom: 32px;
+}
+
+.sign-container label {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.sign-container input {
+    width: 100%;
+    padding: 8px 0 8px 8px;
+    margin-right: 8px;
+}
+
+.sign-container .sign-multiple-column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sign-end {
+    align-items: end;
+    margin-right: -10px;
+}
+
+.sign-end input {
+    width: 150px;
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+.sign-end a {
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.sign-end a:hover {
+    text-decoration: underline;
 }
